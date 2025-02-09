@@ -2,10 +2,14 @@ name: CI
 on: push
 
 jobs:
-  test:
+  test: # 이 job만 실행하려면 act -j 명령어를 사용하면 된다.
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
     - run: npm install
     - run: npm test
+
+# 터미널의 cwd에 .github/workflows 디렉토리가 존재하지 않는다면 github local actions extension은 인식하지 못한다.
+# 즉, private/github-actions-demo/.github/workflows path인 상황에서 터미널의 cwd가 private라면 인식을 하지 못한다.
+# 25/02/10에는 Secrets와 같은 옵션을 사용해보도록 하자
