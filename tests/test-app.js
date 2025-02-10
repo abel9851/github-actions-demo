@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 const app = require('../index.js');
 
-const apiKey = process.env.API_KEY || 'default-for-local-testing';
+const apiKey = process.env.API_KEY;
 
 describe('GET /', () => {
   it('should respond with hello world', (done) => {
@@ -25,7 +25,8 @@ describe('GET /', () => {
   });
 
   it('should have valid API key', () => {
+    should.exist(apiKey, 'API_KEY environment variable must be set');
     apiKey.should.be.a('string');
-    apiKey.length.should.be.at.least(10); // 최소 길이 체크
+    apiKey.length.should.be.at.least(10);
   });
 });
