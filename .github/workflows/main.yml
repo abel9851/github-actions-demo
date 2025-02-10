@@ -38,7 +38,7 @@ jobs:
         db_password_length=${#DB_PASSWORD}
         echo "DB_PASSWORD length: ${db_password_length}"
         if [ -z "${{ secrets.DB_PASSWORD }}" ]; then
-          echo "no db password secret!!!!"
+          echo "no db password secret!!!!!"
           exit 1
         fi
       env:
